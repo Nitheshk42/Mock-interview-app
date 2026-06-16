@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 from database.db import init_db
-from routes import interview, resume, jd, feedback, questions, evaluation
+from routes import interview, resume, jd, feedback, questions, evaluation, improvement
 import logging
 
 # Configure logging
@@ -44,6 +44,7 @@ app.include_router(interview.router, prefix="/api/interview", tags=["Interview"]
 app.include_router(feedback.router, prefix="/api/feedback", tags=["Feedback"])
 app.include_router(questions.router, prefix="/api/questions", tags=["Questions"])
 app.include_router(evaluation.router, prefix="/api/evaluation", tags=["Evaluation"])
+app.include_router(improvement.router, prefix="/api/improvement", tags=["Improvement Plans"])
 
 @app.get("/")
 async def root():
